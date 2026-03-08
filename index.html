@@ -115,11 +115,8 @@
   h1.hero-name {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(60px, 10vw, 130px);
-    line-height: 0.92; letter-spacing: 4px; margin-bottom: 8px;
+    line-height: 0.92; letter-spacing: -1px; margin-bottom: 8px;
   }
-
-  /* ── SPIDER-VERSE: exact demo code ── */
-
   .name-line1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(60px, 10vw, 130px);
@@ -147,8 +144,7 @@
     animation: rgbRight 3.5s infinite;
     clip-path: inset(0);
   }
-
-  .name-line2 {
+ .name-line2 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(60px, 10vw, 130px);
     line-height: 0.92; letter-spacing: 4px;
@@ -168,106 +164,11 @@
     mix-blend-mode: overlay;
     animation: noiseFlash 3.5s infinite;
   }
-
-  /* INK SLAM */
-  .sv-ink {
-    position: absolute; left: 0; right: 0;
-    background: #ff0044;
-    mix-blend-mode: multiply;
-    opacity: 0; pointer-events: none;
-    animation: inkSlam 3.5s infinite;
-  }
-
-  /* SCAN SLICES */
-  .sv-slices {
-    position: absolute; inset: 0;
-    pointer-events: none; overflow: hidden;
-    animation: sliceFlash 3.5s infinite;
-  }
-  .sv-slices span {
-    position: absolute; left: 0; right: 0;
-    background: rgba(255,255,255,0.08); display: block;
-  }
-
-  /* WRAPPER */
-  .sv-wrap { position: relative; display: inline-block; }
-
-  /* ── KEYFRAMES (exact from demo) ── */
-  @keyframes spiderShake {
-    0%,100% { transform: translate(0,0) skew(0deg); }
-    25%     { transform: translate(0.5px,-0.5px) skew(0.1deg); }
-    50%     { transform: translate(-0.5px,0.5px) skew(-0.1deg); }
-    75%     { transform: translate(0.5px,0.5px) skew(0deg); }
-  }
-  @keyframes rgbLeft {
-    0%,100%  { transform: translate(0,0); opacity: 0; }
-    8%       { transform: translate(-6px,2px);  opacity: 0.9; clip-path: inset(20% 0 50% 0); }
-    9%       { transform: translate(-3px,-2px); opacity: 0.7; clip-path: inset(60% 0 5%  0); }
-    10%      { transform: translate(-8px,0);    opacity: 1;   clip-path: inset(0   0 30% 0); }
-    11%      { transform: translate(0,0);        opacity: 0; }
-    40%      { transform: translate(-5px,3px);  opacity: 0.85; clip-path: inset(10% 0 40% 0); }
-    41%      { transform: translate(-9px,-1px); opacity: 1;    clip-path: inset(55% 0 0   0); }
-    42%      { transform: translate(0,0);        opacity: 0; }
-    72%      { transform: translate(-4px,1px);  opacity: 0.9; clip-path: inset(30% 0 20% 0); }
-    73%      { transform: translate(-7px,-3px); opacity: 0.6; clip-path: inset(0   0 60% 0); }
-    74%      { transform: translate(-10px,2px); opacity: 1;   clip-path: inset(45% 0 10% 0); }
-    75%      { transform: translate(0,0);        opacity: 0; }
-  }
-  @keyframes rgbRight {
-    0%,100%  { transform: translate(0,0); opacity: 0; }
-    8%       { transform: translate(6px,-2px);  opacity: 0.9; clip-path: inset(50% 0 10% 0); }
-    9%       { transform: translate(3px,2px);   opacity: 0.7; clip-path: inset(0   0 55% 0); }
-    10%      { transform: translate(8px,0);     opacity: 1;   clip-path: inset(25% 0 0   0); }
-    11%      { transform: translate(0,0);        opacity: 0; }
-    40%      { transform: translate(5px,-3px);  opacity: 0.85; clip-path: inset(40% 0 15% 0); }
-    41%      { transform: translate(9px,1px);   opacity: 1;    clip-path: inset(0   0 50% 0); }
-    42%      { transform: translate(0,0);        opacity: 0; }
-    72%      { transform: translate(4px,-1px);  opacity: 0.9; clip-path: inset(20% 0 35% 0); }
-    73%      { transform: translate(7px,3px);   opacity: 0.6; clip-path: inset(60% 0 5%  0); }
-    74%      { transform: translate(10px,-2px); opacity: 1;   clip-path: inset(5%  0 45% 0); }
-    75%      { transform: translate(0,0);        opacity: 0; }
-  }
-  @keyframes outlineGlitch {
-    0%,100% { transform: translate(0,0); filter: none; }
-    8%   { transform: translate(-4px,0);    filter: hue-rotate(90deg); }
-    9%   { transform: translate(4px,2px);   filter: hue-rotate(180deg) brightness(1.5); }
-    10%  { transform: translate(-2px,-2px); }
-    11%  { transform: translate(0,0); filter: none; }
-    40%  { transform: translate(3px,1px);   filter: hue-rotate(270deg); }
-    41%  { transform: translate(-3px,0);    filter: brightness(2); }
-    42%  { transform: translate(0,0); filter: none; }
-    72%  { transform: translate(-5px,2px);  filter: hue-rotate(45deg); }
-    73%  { transform: translate(5px,-2px);  filter: brightness(1.8); }
-    74%  { transform: translate(-2px,1px);  filter: hue-rotate(135deg); }
-    75%  { transform: translate(0,0); filter: none; }
-  }
-  @keyframes noiseFlash {
-    0%,7%,12%,39%,43%,71%,76%,100% { opacity: 0; }
-    8%,10%  { opacity: 0.35; }
-    9%      { opacity: 0.6; }
-    11%     { opacity: 0.15; }
-    40%,42% { opacity: 0.4; }
-    41%     { opacity: 0.7; }
-    72%,74% { opacity: 0.3; }
-    73%     { opacity: 0.65; }
-    75%     { opacity: 0.2; }
-  }
-  @keyframes inkSlam {
-    0%,8.5%,100% { opacity: 0; height: 0; top: 30%; }
-    9%   { opacity: 0.5; height: 12%; top: 25%; }
-    9.5% { opacity: 0; }
-    40.5%{ opacity: 0.4; height: 8%;  top: 50%; }
-    41%  { opacity: 0; }
-    73.5%{ opacity: 0.45; height: 15%; top: 10%; }
-    74%  { opacity: 0; }
-  }
-  @keyframes sliceFlash {
-    0%,7%,12%,100%  { opacity: 0; }
-    8%,9%,10%,11%   { opacity: 1; }
-    39%,43%         { opacity: 0; }
-    40%,41%,42%     { opacity: 1; }
-    71%,76%         { opacity: 0; }
-    72%,73%,74%,75% { opacity: 1; }
+  @keyframes glitchText {
+    0%,88%,100% { text-shadow: none; transform: none; }
+    90% { text-shadow: 3px 0 var(--neon-pink), -3px 0 var(--neon-cyan); transform: skew(-1deg); }
+    93% { text-shadow: -3px 0 var(--neon-pink), 3px 0 var(--neon-cyan); transform: skew(1deg); }
+    96% { text-shadow: none; transform: none; }
   }
 
   .hero-title {
@@ -610,8 +511,8 @@
   }
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-  .reveal { opacity: 1; transform: none; transition: opacity 0.7s, transform 0.7s; }
-  .reveal.animate-in { opacity: 1; transform: translateY(0); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
@@ -656,7 +557,7 @@
   <div class="hero-content">
     <div class="hero-tag fade-up" style="animation-delay:0.1s">Chennai, India · Open to Relocation</div>
 
-    <h1 class="hero-name fade-up" style="animation-delay:0.2s">
+   <h1 class="hero-name fade-up" style="animation-delay:0.2s">
       <!-- FIRST LINE — exact demo structure -->
       <div class="sv-wrap">
         <span class="name-line1" data-text="JAYAVIGNESH">JAYAVIGNESH</span>
@@ -1023,4 +924,25 @@
     });
   });
 
-  // no scroll reveal needed — content always visible
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // Periodic name glitch
+  setInterval(() => {
+    const n = document.querySelector('.name-line1');
+    if (n) {
+      n.style.transform = `skew(${(Math.random()-0.5)*5}deg)`;
+      setTimeout(() => n.style.transform = '', 120);
+    }
+  }, 5000);
+</script>
+</body>
+</html>
