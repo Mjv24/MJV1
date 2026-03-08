@@ -562,11 +562,11 @@
    <h1 class="hero-name fade-up" style="animation-delay:0.2s">
       <!-- FIRST LINE — exact demo structure -->
       <div class="sv-wrap">
-        <span class="name-line1" data-text="JAYAVIGNESH">JAYAVIGNESH</span>
+        <span class="name-line1" id="morphLine1" data-text="JAYAVIGNESH">JAYAVIGNESH</span>
       </div>
       <!-- SECOND LINE -->
       <div class="sv-wrap">
-        <span class="name-line2">MURUGAVEL</span>
+        <span class="name-line2" id="morphLine2">MURUGAVEL</span>
       </div>
     </h1>
 
@@ -938,6 +938,53 @@
       setTimeout(() => n.style.transform = '', 120);
     }
   }, 5000);
+
+  / ── NAME MORPH ANIMATION ──
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*!?';
+  const NAME1 = 'JAYAVIGNESH';
+  const NAME2 = 'MURUGAVEL';
+
+  function randChar() {
+    return CHARS[Math.floor(Math.random() * CHARS.length)];
+  }
+
+  function morphText(elId, finalText, duration) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const len = finalText.length;
+    const startTime = performance.now();
+    const resolved = new Array(len).fill(false);
+
+    function frame(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const resolvedCount = Math.floor(progress * len);
+      for (let i = 0; i < resolvedCount; i++) resolved[i] = true;
+
+      let html = '';
+      for (let i = 0; i < len; i++) {
+        if (resolved[i]) {
+          html += `<span style="color:#fff">${finalText[i]}</span>`;
+        } else {
+          const col = Math.random() > 0.5 ? '#ff006e' : '#00eeff';
+          html += `<span style="color:${col}">${randChar()}</span>`;
+        }
+      }
+      el.innerHTML = html;
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function triggerMorph() {
+    morphText('morphLine1', NAME1, 900);
+    setTimeout(() => morphText('morphLine2', NAME2, 700), 250);
+  }
+
+  setTimeout(() => {
+    triggerMorph();
+    setInterval(triggerMorph, 6000);
+  }, 1200);
 </script>
 </body>
 </html>
