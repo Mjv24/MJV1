@@ -690,7 +690,7 @@
   const ctx = canvas.getContext('2d');
 
   let W, H, mouse = { x: -9999, y: -9999 };
-  const PARTICLE_COUNT = 200;
+  const PARTICLE_COUNT = 150;
   const CONNECTION_DIST = 140;
   const MOUSE_REPEL = 120;
 
@@ -709,8 +709,8 @@
     reset(initial) {
       this.x = Math.random() * W;
       this.y = initial ? Math.random() * H : (Math.random() > 0.5 ? -10 : H + 10);
-      this.vx = (Math.random() - 0.5) * 0.8;
-      this.vy = (Math.random() - 0.5) * 0.8;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
       this.r = Math.random() * 1.8 + 0.8;
       this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
       this.alpha = Math.random() * 0.5 + 0.2;
@@ -763,7 +763,7 @@
       this.x = Math.random() * W;
       this.y = Math.random() * H * 0.5;
       this.len = 80 + Math.random() * 120;
-      this.speed = 9 + Math.random() * 10;
+      this.speed = 7 + Math.random() * 9;
       this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
       this.alpha = 0;
       this.life = 0;
@@ -806,7 +806,7 @@
     }
   }
 
-  const shootingStars = Array.from({ length: 15 }, () => new ShootingStar());
+  const shootingStars = Array.from({ length: 10 }, () => new ShootingStar());
 
   function drawConnections() {
     for (let i = 0; i < particles.length; i++) {
