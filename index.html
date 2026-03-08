@@ -610,8 +610,8 @@
   }
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal { opacity: 1; transform: none; transition: opacity 0.7s, transform 0.7s; }
+  .reveal.animate-in { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
@@ -695,7 +695,7 @@
 
     <div class="hero-ctas fade-up" style="animation-delay:0.7s">
       <a href="#projects" class="btn-primary">View Work →</a>
-      <a href="/cdn-cgi/l/email-protection#c1aba4b8a0acb4b381a6aca0a8adefa2aeac" class="btn-secondary">Hire Me</a>
+      <a href="mailto:jeyamur@gmail.com" class="btn-secondary">Hire Me</a>
     </div>
   </div>
 
@@ -965,7 +965,7 @@
   <div class="contact-details">
     <div class="contact-detail">
       <div class="contact-detail-label">Email</div>
-      <a href="/cdn-cgi/l/email-protection#91fbf4e8f0fce4e3d1f6fcf0f8fdbff2fefc"><span class="__cf_email__" data-cfemail="e18b8498808c9493a1868c80888dcf828e8c">[email&#160;protected]</span></a>
+      <a href="mailto:jeyamur@gmail.com">jeyamur@gmail.com</a>
     </div>
     <div class="contact-detail">
       <div class="contact-detail-label">Phone</div>
@@ -990,7 +990,7 @@
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const dot = document.getElementById('cursorDot');
@@ -1023,13 +1023,4 @@
     });
   });
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  revealEls.forEach(el => revealObs.observe(el));
+  // no scroll reveal needed — content always visible
