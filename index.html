@@ -115,7 +115,7 @@
 .curtain-right {
   position: absolute; top: 0; bottom: 0; width: 50%;
   background: #040408;
-  animation: curtainOpen 0.8s cubic-bezier(0.77,0,0.18,1) 0.4s both;
+  animation: curtainOpen 0.8s cubic-bezier(0.77,0,0.18,1) 1.0s both;
 }
 
 .curtain-left  { left: 0;   transform-origin: left;  animation-name: curtainLeft;  }
@@ -136,7 +136,7 @@
   content: '';
   position: absolute; top: 0; bottom: 0; width: 2px;
   background: linear-gradient(180deg, transparent, #00f5ff, #ff006e, #b8ff00, transparent);
-  animation: curtainLineLeft 0.8s cubic-bezier(0.77,0,0.18,1) 0.4s both;
+  animation: curtainLineLeft 0.8s cubic-bezier(0.77,0,0.18,1) 1.0s both;
   box-shadow: 0 0 12px #00f5ff, 0 0 24px rgba(0,245,255,0.4);
 }
 .curtain-left::after  { right: 0; }
