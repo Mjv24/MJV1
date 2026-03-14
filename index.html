@@ -105,6 +105,69 @@
     100%{ opacity: 1;   }
   }
 
+  /* ✅ CURTAIN ANIMATION */
+.curtain {
+  position: fixed; inset: 0; z-index: 99999;
+  pointer-events: none;
+}
+
+.curtain-left,
+.curtain-right {
+  position: absolute; top: 0; bottom: 0; width: 50%;
+  background: #040408;
+  animation: curtainOpen 0.8s cubic-bezier(0.77,0,0.18,1) 0.4s both;
+}
+
+.curtain-left  { left: 0;   transform-origin: left;  animation-name: curtainLeft;  }
+.curtain-right { right: 0;  transform-origin: right; animation-name: curtainRight; }
+
+@keyframes curtainLeft  {
+  0%   { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes curtainRight {
+  0%   { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+/* neon line in the middle as curtains split */
+.curtain-left::after,
+.curtain-right::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, transparent, #00f5ff, #ff006e, #b8ff00, transparent);
+  animation: curtainLineLeft 0.8s cubic-bezier(0.77,0,0.18,1) 0.4s both;
+  box-shadow: 0 0 12px #00f5ff, 0 0 24px rgba(0,245,255,0.4);
+}
+.curtain-left::after  { right: 0; }
+.curtain-right::after { left: 0;  }
+
+@keyframes curtainLineLeft {
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* center logo shown during curtain */
+.curtain-logo {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-weight: 900; letter-spacing: 8px;
+  color: #fff;
+  text-shadow: 0 0 30px #00f5ff, 0 0 60px rgba(0,245,255,0.4);
+  animation: logoFade 0.8s ease 0.4s both;
+  white-space: nowrap;
+  z-index: 2;
+}
+.curtain-logo span { color: #ff006e; }
+
+@keyframes logoFade {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1);    }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+}
+
   /* ── PARTICLE CANVAS ── */
   #particle-canvas {
     position: fixed;
@@ -412,7 +475,11 @@
 </style>
 </head>
 <body>
-
+<div class="curtain">
+  <div class="curtain-left"></div>
+  <div class="curtain-right"></div>
+  <div class="curtain-logo">JMV<span>//</span>DEV</div>
+</div>
 <!-- BG IMAGE LAYERS -->
 <div class="bg-image-wrap">
   <div class="bg-image"></div>
