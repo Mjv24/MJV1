@@ -613,10 +613,10 @@
   const IS_MOBILE = window.innerWidth < 768;
   const IS_TABLET = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-  const PARTICLE_COUNT  = IS_MOBILE ? 30  : IS_TABLET ? 60  : 110;
+  const PARTICLE_COUNT  = IS_MOBILE ? 40  : IS_TABLET ? 100  : 200;
   const CONNECTION_DIST = IS_MOBILE ? 80  : IS_TABLET ? 110 : 140;
   const MOUSE_REPEL     = IS_MOBILE ? 60  : IS_TABLET ? 90  : 120;
-  const STAR_COUNT      = IS_MOBILE ? 2   : IS_TABLET ? 3   : 5;
+  const STAR_COUNT      = IS_MOBILE ? 4   : IS_TABLET ? 5   : 8;
   const PARTICLE_SPEED  = IS_MOBILE ? 0.2 : IS_TABLET ? 0.3 : 0.4;
 
   const COLORS = ['#00f5ff', '#ff006e', '#b8ff00', '#bf00ff'];
