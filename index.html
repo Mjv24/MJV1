@@ -680,7 +680,7 @@
   const IS_MOBILE = window.innerWidth < 768;
   const IS_TABLET = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-  const PARTICLE_COUNT  = IS_MOBILE ? 40  : IS_TABLET ? 100  : 200;
+  const PARTICLE_COUNT  = IS_MOBILE ? 35  : IS_TABLET ? 90  : 150;
   const CONNECTION_DIST = IS_MOBILE ? 80  : IS_TABLET ? 110 : 140;
   const MOUSE_REPEL     = IS_MOBILE ? 60  : IS_TABLET ? 90  : 120;
   const STAR_COUNT      = IS_MOBILE ? 4   : IS_TABLET ? 5   : 8;
@@ -705,7 +705,7 @@
       this.y          = initial ? Math.random() * H : (Math.random() > 0.5 ? -10 : H + 10);
       this.vx         = (Math.random() - 0.5) * PARTICLE_SPEED;
       this.vy         = (Math.random() - 0.5) * PARTICLE_SPEED;
-      this.r          = IS_MOBILE ? Math.random() * 2 + 1.0 : Math.random() * 3 + 1.5;
+      this.r          = IS_MOBILE ? Math.random() * 1.75 + 0.75 : Math.random() * 2.5 + 1.0;
       this.color      = COLORS[Math.floor(Math.random() * COLORS.length)];
       this.alpha      = Math.random() * 0.5 + 0.2;
       this.pulse      = Math.random() * Math.PI * 2;
